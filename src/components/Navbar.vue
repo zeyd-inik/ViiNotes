@@ -84,18 +84,12 @@ const isNavOpen = ref(false);
     }
 }
 /* transition */
-.nav-enter-active {
+.nav-enter-active,
+.nav-leave-active {
     transition: all ease-in-out 0.8s;
 }
-
-.nav-leave-active {
-    transition: all ease-out 0.8s;
-}
-.nav-enter-from {
-    transform: translateY(-100%);
-    opacity: 0;
-}
+.nav-enter-from,
 .nav-leave-to {
-    opacity: 0;
+    transform: rotateX(-90deg);
 }
 </style>
