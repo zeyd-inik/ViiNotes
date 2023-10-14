@@ -1,7 +1,19 @@
-<script setup></script>
+<script setup>
+import { useNotesStore } from '@/stores/notesStore.js';
+import { ref } from 'vue';
+
+const notesStore = useNotesStore();
+
+const userInput = ref('');
+
+function addNote() {
+    notesStore.addNoteToStore(userInput.value);
+    userInput.value = '';
+}
+</script>
 <template>
-    <form>
-        <textarea placeholder="Add a new note"></textarea>
+    <form @submit.prevent="addNote">
+        <textarea v-model="userInput" placeholder="Add a new note"></textarea>
         <button class="btn" type="submit">add new note</button>
     </form>
 </template>
@@ -22,7 +34,7 @@ form {
         outline: none;
         font-size: larger;
         &::placeholder {
-            color: rgb(204, 198, 198);
+            color: rgb(211, 208, 208);
             font-size: large;
         }
     }
