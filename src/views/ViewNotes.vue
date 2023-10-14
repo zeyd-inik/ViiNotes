@@ -1,11 +1,13 @@
 <script setup>
-import AddNotesForm from '../components/AddNotesForm.vue';
+import AddNotesForm from '@/components/AddNotesForm.vue';
+import NoteCard from '@/components/NoteCard.vue';
 </script>
 
 <template>
     <div class="container">
         <div class="wrapper">
             <AddNotesForm />
+            <NoteCard />
         </div>
     </div>
 </template>

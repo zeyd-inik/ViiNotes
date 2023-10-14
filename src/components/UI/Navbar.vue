@@ -52,7 +52,6 @@ const isNavOpen = ref(false);
 
 <style lang="scss" scoped>
 .navbar {
-    font-family: 'Open Sans', sans-serif;
     font-family: 'Poppins', sans-serif;
     background-color: #48c78e;
     position: relative;
