@@ -1,7 +1,23 @@
+<script setup>
+import AddNotesForm from '../components/AddNotesForm.vue';
+</script>
+
 <template>
-    <div>notes</div>
+    <div class="container">
+        <div class="wrapper">
+            <AddNotesForm />
+        </div>
+    </div>
 </template>
 
-<script setup></script>
-
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container {
+    min-height: calc(100vh - (55.78px + 2rem));
+    background-color: #effaf5;
+    .wrapper {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+    }
+}
+</style>
