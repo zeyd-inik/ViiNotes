@@ -66,6 +66,7 @@ const isNavOpen = ref(false);
         right: 0;
         left: 0;
         z-index: 3;
+        transform-origin: top center;
 
         display: flex;
         flex-direction: column;
@@ -91,5 +92,6 @@ const isNavOpen = ref(false);
 .nav-enter-from,
 .nav-leave-to {
     transform: rotateX(-90deg);
+    opacity: 0;
 }
 </style>
