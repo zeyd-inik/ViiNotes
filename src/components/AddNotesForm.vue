@@ -19,7 +19,9 @@ function addNote() {
 <template>
     <form @submit.prevent="addNote">
         <textarea v-model="userInput" placeholder="Add a new note"></textarea>
-        <button class="btn" type="submit">add new note</button>
+        <button class="btn" :class="{ btn_disabled: !userInput }" type="submit" :disabled="!userInput">
+            add new note
+        </button>
     </form>
 </template>
 
@@ -56,8 +58,14 @@ form {
         background-color: #48c78e;
         margin-top: 16px;
         text-transform: capitalize;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+    .btn_disabled {
+        background-color: rgb(175, 169, 169);
         &:hover {
-            cursor: pointer;
+            cursor: not-allowed;
         }
     }
 }
