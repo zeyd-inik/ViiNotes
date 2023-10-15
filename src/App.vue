@@ -6,10 +6,21 @@ import Navbar from '@/components/UI/Navbar.vue';
     <header>
         <Navbar />
     </header>
-
-    <RouterView />
+    <main>
+        <div class="wrapper">
+            <RouterView />
+        </div>
+    </main>
 </template>
 
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:ital,wght@0,700;1,400;1,800&display=swap');
+<style>
+main {
+    min-height: calc(100vh - 55.78px);
+    background-color: #effaf5;
+    .wrapper {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+    }
+}
 </style>

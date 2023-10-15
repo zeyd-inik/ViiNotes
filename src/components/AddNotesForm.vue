@@ -33,6 +33,8 @@ form {
         padding: 1rem;
         outline: none;
         font-size: larger;
+        font-family: 'Raleway', sans-serif;
+
         &::placeholder {
             color: rgb(211, 208, 208);
             font-size: large;

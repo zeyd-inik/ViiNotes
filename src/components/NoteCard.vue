@@ -14,8 +14,6 @@ const notesStore = useNotesStore();
 </template>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:ital,wght@0,700;1,400;1,800&display=swap');
-
 .card {
     width: 100%;
     height: 150px;
@@ -23,7 +21,6 @@ const notesStore = useNotesStore();
     margin: 1rem 0;
     border-radius: 5px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    font-family: 'Poppins', sans-serif;
 
     display: flex;
     flex-direction: column;
@@ -41,11 +38,18 @@ const notesStore = useNotesStore();
         .btn {
             flex: 1;
             height: 100%;
+            color: #35795a;
+            font-weight: 600;
 
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #35795a;
+            transition: background-color ease 0.4s;
+            &:hover {
+                cursor: pointer;
+                background-color: rgb(224, 224, 224);
+            }
+
             &:first-child {
                 border-right: 4px solid #effaf5;
             }
