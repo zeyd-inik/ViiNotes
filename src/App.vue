@@ -15,8 +15,11 @@ import Navbar from '@/components/UI/Navbar.vue';
 
 <style>
 main {
-    min-height: calc(100vh - 55.78px);
+    min-height: calc(100vh - 49.7812px);
     background-color: #effaf5;
+    @media (max-width: 1024px) {
+        min-height: calc(100vh - 57.7812px);
+    }
     .wrapper {
         max-width: 1024px;
         margin: 0 auto;
