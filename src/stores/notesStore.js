@@ -13,7 +13,7 @@ export const useNotesStore = defineStore('notes', () => {
     const numberofCharacters = computed(() => {
         let chars = 0;
         notes.value.forEach((note) => {
-            chars += note.length;
+            chars += note.text.length;
         });
         return chars;
     });

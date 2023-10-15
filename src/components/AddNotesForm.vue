@@ -1,4 +1,5 @@
 <script setup>
+import { uuid } from 'vue-uuid';
 import { useNotesStore } from '@/stores/notesStore.js';
 import { ref } from 'vue';
 
@@ -7,7 +8,11 @@ const notesStore = useNotesStore();
 const userInput = ref('');
 
 function addNote() {
-    notesStore.addNoteToStore(userInput.value);
+    const note = {
+        id: uuid.v4(),
+        text: userInput.value,
+    };
+    notesStore.addNoteToStore(note);
     userInput.value = '';
 }
 </script>

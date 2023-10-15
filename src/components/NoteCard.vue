@@ -5,7 +5,7 @@ const notesStore = useNotesStore();
 </script>
 <template>
     <div v-for="note in notesStore.notes" class="card">
-        <div class="note">{{ note }}</div>
+        <div class="note">{{ note.text }}</div>
         <div class="buttons">
             <div class="btn">Edit</div>
             <div class="btn">Delete</div>
