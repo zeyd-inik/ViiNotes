@@ -7,6 +7,12 @@ export const useNotesStore = defineStore('notes', () => {
     function addNoteToStore(userNote) {
         notes.value.unshift(userNote);
     }
+    function deleteNote(id) {
+        notes.value = notes.value.filter((note) => {
+            return note.id != id;
+        });
+    }
+
     const numberOfNotes = computed(() => {
         return notes.value.length;
     });
@@ -22,5 +28,5 @@ export const useNotesStore = defineStore('notes', () => {
     count.value++
   } */
 
-    return { notes, addNoteToStore, numberOfNotes, numberofCharacters /*  doubleCount, increment */ };
+    return { notes, addNoteToStore, numberOfNotes, numberofCharacters, deleteNote };
 });

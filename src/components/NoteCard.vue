@@ -2,13 +2,23 @@
 import { useNotesStore } from '@/stores/notesStore.js';
 
 const notesStore = useNotesStore();
+
+const props = defineProps({
+    note: {
+        type: Object,
+        required: true,
+    },
+});
 </script>
 <template>
-    <div v-for="note in notesStore.notes" class="card">
-        <div class="note">{{ note.text }}</div>
+    <div class="card">
+        <div class="note">
+            {{ note.text }}
+            <div class="counter">{{ note.text.length }} characters</div>
+        </div>
         <div class="buttons">
             <div class="btn">Edit</div>
-            <div class="btn">Delete</div>
+            <div @click="notesStore.deleteNote(note.id)" class="btn">Delete</div>
         </div>
     </div>
 </template>
@@ -21,15 +31,24 @@ const notesStore = useNotesStore();
     margin: 1rem 0;
     border-radius: 5px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    overflow: hidden;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    .counter {
+        position: absolute;
+        bottom: 8px;
+        right: 20px;
+        padding: 0.5rem;
+        color: rgb(180, 175, 175);
+    }
 
     .note {
         flex: 1;
         border-bottom: 3px solid #effaf5;
         padding: 1rem;
+        position: relative;
     }
     .buttons {
         display: flex;
