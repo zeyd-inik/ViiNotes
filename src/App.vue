@@ -3,19 +3,22 @@ import Navbar from '@/components/UI/Navbar.vue';
 </script>
 
 <template>
-    <header>
-        <Navbar />
-    </header>
-    <main>
-        <div class="wrapper">
-            <RouterView />
-        </div>
-    </main>
+    <div id="app">
+        <header>
+            <Navbar />
+        </header>
+        <main>
+            <div class="wrapper">
+                <RouterView />
+            </div>
+        </main>
+    </div>
 </template>
 
 <style>
 main {
     min-height: calc(100vh - 49.7812px);
+
     background-color: #effaf5;
     @media (max-width: 1024px) {
         min-height: calc(100vh - 57.7812px);

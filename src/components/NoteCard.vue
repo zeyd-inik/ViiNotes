@@ -1,4 +1,5 @@
 <script setup>
+import ModalDeleteNote from '@/components/ModalDeleteNote.vue';
 import { useNotesStore } from '@/stores/notesStore.js';
 
 const notesStore = useNotesStore();
@@ -20,6 +21,7 @@ const props = defineProps({
             <div class="btn">Edit</div>
             <div @click="notesStore.deleteNote(note.id)" class="btn">Delete</div>
         </div>
+        <ModalDeleteNote />
     </div>
 </template>
 
