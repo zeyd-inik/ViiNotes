@@ -1,14 +1,23 @@
 <script setup>
+import { ref } from 'vue';
 import { Icon } from '@iconify/vue';
+import { onClickOutside } from '@vueuse/core';
 import { useNotesStore } from '@/stores/notesStore.js';
 const notesStore = useNotesStore();
+
+const modalRef = ref(null);
+onClickOutside(modalRef, closeModal);
+
+function closeModal() {
+    emit('closeModal');
+}
 
 const props = defineProps(['noteId']);
 const emit = defineEmits(['closeModal']);
 </script>
 <template>
     <div class="overlay"></div>
-    <div class="modal">
+    <div ref="modalRef" class="modal">
         <div class="modal-box modal-A">
             <p>Delete Note?</p>
             <i class="delete-icon">
@@ -54,6 +63,7 @@ const emit = defineEmits(['closeModal']);
     background-color: rgb(240, 234, 234);
     border-radius: 6px;
     width: 450px;
+    max-width: 94vw;
     height: 200px;
 
     display: flex;
