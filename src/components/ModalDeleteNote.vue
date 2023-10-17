@@ -1,19 +1,30 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { Icon } from '@iconify/vue';
 import { onClickOutside } from '@vueuse/core';
 import { useNotesStore } from '@/stores/notesStore.js';
+
 const notesStore = useNotesStore();
-
-const modalRef = ref(null);
-onClickOutside(modalRef, closeModal);
-
-function closeModal() {
-    emit('closeModal');
-}
 
 const props = defineProps(['noteId']);
 const emit = defineEmits(['closeModal']);
+
+const modalRef = ref(null);
+onClickOutside(modalRef, closeModal);
+function closeModal() {
+    emit('closeModal');
+}
+/* keybord control */
+const handleKeyboard = (e) => {
+    if (e.key === 'Escape') closeModal();
+};
+
+onMounted(() => {
+    document.addEventListener('keyup', handleKeyboard);
+});
+onUnmounted(() => {
+    document.removeEventListener('keyup', handleKeyboard);
+});
 </script>
 <template>
     <div class="overlay"></div>
