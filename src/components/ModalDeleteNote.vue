@@ -1,7 +1,10 @@
 <script setup>
 import { Icon } from '@iconify/vue';
-const props = defineProps({});
-const emit = defineEmits(['']);
+import { useNotesStore } from '@/stores/notesStore.js';
+const notesStore = useNotesStore();
+
+const props = defineProps(['noteId']);
+const emit = defineEmits(['closeModal']);
 </script>
 <template>
     <div class="overlay"></div>
@@ -9,13 +12,20 @@ const emit = defineEmits(['']);
         <div class="modal-box modal-A">
             <p>Delete Note?</p>
             <i class="delete-icon">
-                <Icon icon="typcn:delete" color="#f14668" width="30" height="30" />
+                <Icon
+                    class="icon"
+                    color="#f14668"
+                    height="30"
+                    icon="typcn:delete"
+                    width="30"
+                    @click="$emit('closeModal')"
+                />
             </i>
         </div>
         <div class="modal-box modal-B">Are you sure you want to delete this note?</div>
         <div class="modal-box modal-C">
-            <button class="btn">Cancel</button>
-            <button class="btn">Delete</button>
+            <button @click="$emit('closeModal')" class="btn">Cancel</button>
+            <button @click="notesStore.deleteNote(noteId)" class="btn">Delete</button>
         </div>
     </div>
 </template>
@@ -42,13 +52,16 @@ const emit = defineEmits(['']);
     z-index: 99;
 
     background-color: rgb(240, 234, 234);
+    border-radius: 6px;
     width: 450px;
     height: 200px;
-    border-radius: 6px;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    .icon {
+        cursor: pointer;
+    }
     &-box {
         padding: 1rem;
         display: flex;

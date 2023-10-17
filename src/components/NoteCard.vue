@@ -1,8 +1,11 @@
 <script setup>
 import ModalDeleteNote from '@/components/ModalDeleteNote.vue';
 import { useNotesStore } from '@/stores/notesStore.js';
+import { ref } from 'vue';
 
 const notesStore = useNotesStore();
+
+const isModalActive = ref(false);
 
 const props = defineProps({
     note: {
@@ -19,9 +22,9 @@ const props = defineProps({
         </div>
         <div class="buttons">
             <div class="btn">Edit</div>
-            <div @click="notesStore.deleteNote(note.id)" class="btn">Delete</div>
+            <div @click="isModalActive = true" class="btn">Delete</div>
         </div>
-        <ModalDeleteNote />
+        <ModalDeleteNote v-if="isModalActive" :noteId="note.id" @closeModal="isModalActive = false" />
     </div>
 </template>
 
