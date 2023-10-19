@@ -2,6 +2,9 @@
 import ModalDeleteNote from '@/components/ModalDeleteNote.vue';
 import { useNotesStore } from '@/stores/notesStore.js';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const notesStore = useNotesStore();
 
@@ -21,7 +24,7 @@ const props = defineProps({
             <div class="counter">{{ note.text.length }} characters</div>
         </div>
         <div class="buttons">
-            <div class="btn">Edit</div>
+            <div @click="router.push({ name: 'ViewEditNote', params: { id: note.id } })" class="btn">Edit</div>
             <div @click="isModalActive = true" class="btn">Delete</div>
         </div>
         <ModalDeleteNote v-if="isModalActive" :noteId="note.id" @closeModal="isModalActive = false" />

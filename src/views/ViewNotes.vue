@@ -8,7 +8,7 @@ const notesStore = useNotesStore();
 
 <template>
     <AddNotesForm />
-    <NoteCard :note="noteObj" v-for="noteObj in notesStore.notes" :key="noteObj.id" />
+    <NoteCard v-for="noteObj in notesStore.notes" :note="noteObj" :key="noteObj.id" />
 </template>
 
 <style lang="scss" scoped></style>
